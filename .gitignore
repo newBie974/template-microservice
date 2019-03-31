@@ -1,2 +1,5 @@
 #ignore node_module
 /node_modules
+
+#ignore compiled build
+/build
