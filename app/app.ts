@@ -1,22 +1,31 @@
-import express = require('express');
-import errorHandler from './middlewares/error';
-// Create application express
-const app: express.Application = express();
-
-
+import express from 'express';
+import * as bodyParser from 'body-parser';
 
 export default class appLauncher {
-    constructor() {
-        const error = new errorHandler();
-        app.get('/', (req, res) => {
-            res.send('Hello World');
-        });
+    public app: express.Application;
+    public port: number;
 
-        app.get('/coucou', (req, res) => {
-            res.send('coucou');
+    constructor(controllers: [any], port: number) {
+        this.app = express();
+        this.port = port;
+
+        this.initializeMiddlewares();
+        this.initializeControllers(controllers);
+    }
+
+    private initializeMiddlewares() {
+        this.app.use(bodyParser.json());
+    }
+
+    private initializeControllers(controllers: [any]) {
+        controllers.forEach((controller) => {
+            this.app.use('/', controller.router);
         })
-        app.listen(3000, () => {
-            console.log('I am listening 3000 ! ');
+    }
+
+    public listen() {
+        this.app.listen(this.port, () => {
+            console.log(`App listening on the port ${this.port}`);
         });
     }
 };
