@@ -17,7 +17,6 @@ export default class myController {
     }
 
     getAll = (request: express.Request, response: express.Response) => {
-        console.log(this.demo);
         response.send(this.demo);
     }
 
