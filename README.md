@@ -46,4 +46,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
+* [Wanago]https://wanago.io/2018/12/03/typescript-express-tutorial-routing-controllers-middleware/
