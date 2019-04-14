@@ -32,7 +32,7 @@ npm v6.9.0
 
 * [Express](https://github.com/expressjs/express) - Express JS
 * [TypeScript](https://github.com/Microsoft/TypeScript) - TypeScript
-* [DynamoDB]https://aws.amazon.com/fr/getting-started/tutorials/create-nosql-table/?trk=gs_card -Amazon - DynamoDB
+* [DynamoDB](https://aws.amazon.com/fr/getting-started/tutorials/create-nosql-table/?trk=gs_card) -Amazon - DynamoDB
 
 
 ## Authors
@@ -46,4 +46,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* [Wanago]https://wanago.io/2018/12/03/typescript-express-tutorial-routing-controllers-middleware/
+* [Wanago](https://wanago.io/2018/12/03/typescript-express-tutorial-routing-controllers-middleware/)
