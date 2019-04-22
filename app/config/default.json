@@ -1,0 +1,9 @@
+{
+    "port": 3030,
+    "mongodb": {
+        "user": "user",
+        "password": "mypassword",
+        "path": "mongo.path",
+        "port": 5000
+    }
+}
