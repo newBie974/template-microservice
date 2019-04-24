@@ -1,29 +1,18 @@
 import * as express from 'express';
+import myInterfaces from '../interfaces/myController.interface';
 
-export default class myController {
+export default class myControllerPut {
     public router = express.Router();
-    public demo = [{
+    public demo: myInterfaces[] =  [{
+        id: 1,
         name: 'Blackwood',
-        id: 1
     }];
     constructor() {
         this.initializeRoutes();
     }
 
     public initializeRoutes() {
-        this.router.get('/', this.getAll);
-        this.router.post('/mycontroller', this.create);
         this.router.put('/:id', this.update);
-    }
-
-    getAll = (request: express.Request, response: express.Response) => {
-        response.send(this.demo);
-    }
-
-    create = (request: express.Request, response: express.Response) => {
-        const post = request.body;
-        this.demo.push(post);
-        response.send(this.demo);
     }
 
     update = (request: express.Request, response: express.Response) => {
