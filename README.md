@@ -32,7 +32,6 @@ npm v6.9.0
 
 * [Express](https://github.com/expressjs/express) - Express JS
 * [TypeScript](https://github.com/Microsoft/TypeScript) - TypeScript
-* [DynamoDB](https://aws.amazon.com/fr/getting-started/tutorials/create-nosql-table/?trk=gs_card) -Amazon - DynamoDB
 
 
 ## Authors
