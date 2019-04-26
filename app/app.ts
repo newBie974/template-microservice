@@ -1,13 +1,20 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
+
+import config from './config/default.json';
 
 export default class appLauncher {
     private app: express.Application;
-    private port: number;
+    private port: Number;
+    private dbLink: String;
 
-    constructor(controllers:any[], port: number) {
+    constructor(controllers: any[]) {
         this.app = express();
-        this.port = port;
+        this.port = (<any>config).port;
+        this.dbLink = (<any>config).mongodb.path;
+
+        this.connectToDatabase();
 
         this.initializeMiddlewares();
         this.initializeControllers(controllers);
@@ -17,10 +24,14 @@ export default class appLauncher {
         this.app.use(bodyParser.json());
     }
 
-    private initializeControllers(controllers:any[]) {
+    private initializeControllers(controllers: any[]) {
         controllers.forEach((controller) => {
             this.app.use('/', controller.router);
         })
+    }
+
+    private connectToDatabase(){
+        mongoose.connect(`${this.dbLink}`);
     }
 
     public listen() {

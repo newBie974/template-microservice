@@ -1,4 +1,4 @@
 export default interface myController {
-    id: number,
-    name: string
+    id: Number,
+    name: String
 }
