@@ -1,24 +1,29 @@
 import * as express from 'express';
+import myControllerModel from '../models/myController.model';
+
 import myInterfaces from '../interfaces/myController.interface';
 
 export default class myControllerPut {
-    public router = express.Router();
-    public demo: myInterfaces[] =  [{
-        id: 1,
-        name: 'Blackwood',
-    }];
+    private router = express.Router();
+    private myControllerModel = myControllerModel;
+
     constructor() {
         this.initializeRoutes();
     }
 
-    public initializeRoutes() {
+    private initializeRoutes() {
         this.router.put('/:id', this.update);
     }
 
     update = (request: express.Request, response: express.Response) => {
-        const updateData = this.demo.find(i => i.id == request.params.id);
-        if(updateData)
-            updateData.name = request.body.name;
-        response.send(updateData);
+       const id = request.params.id;
+       const updateData: myInterfaces = request.body;
+       myControllerModel.findOneAndUpdate({_id: id}, updateData, { new: true })
+        .then((res) => {
+            response.send(res);
+        })
+        .catch((err) => {
+            response.send(err);
+        })
     }
 }

@@ -1,13 +1,10 @@
 import * as express from 'express';
-import myInterfaces from '../interfaces/myController.interface';
 import myControllerModel from '../models/myController.model';
 
 export default class myControllerGet {
     private router = express.Router();
-    private demo: myInterfaces[] =  [{
-        id: 1,
-        name: 'Blackwood',
-    }];
+    private myControllerModel = myControllerModel;
+
     constructor() {
         this.initializeRoutes();
     }
@@ -16,13 +13,12 @@ export default class myControllerGet {
         this.router.get('/', this.getAll);
     }
 
-    getAll = (request: express.Request, response: express.Response) => {
-        myControllerModel.find()
-            .then((res) => {
-                response.send(res);
-            })
-            .catch((err) => {
-                response.send(err);
-            })
+    private getAll = async (request: express.Request, response: express.Response): Promise<express.Response> => {
+        try {
+            const listController = await this.myControllerModel.find();
+            return response.send(listController);
+        } catch(err) {
+            return response.send({ status: 404 });
+        }
     }
 }

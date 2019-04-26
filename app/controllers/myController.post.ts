@@ -1,9 +1,10 @@
 import * as express from 'express';
 import myInterfaces from '../interfaces/myController.interface';
-import myControllerPostModel from '../models/myController.model';
+import myControllerModel from '../models/myController.model';
 
 export default class myControllerPost {
     private router = express.Router();
+    private myControllerModel = myControllerModel;
 
     constructor() {
         this.initializeRoutes();
@@ -15,13 +16,13 @@ export default class myControllerPost {
 
     create = (request: express.Request, response: express.Response) => {
         const post: myInterfaces = request.body;
-        const createData = new myControllerPostModel(post);
+        const createData = new this.myControllerModel(post);
         createData.save()
-            .then((res) => {
-                response.send(res);
-            })
-            .catch((err) => {
-                response.send(err);
-            });
+          .then((res) => {
+            response.send(res);
+          })
+          .catch((err) => {
+            response.send(err);
+          });
     }
 }

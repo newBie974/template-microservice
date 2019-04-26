@@ -31,7 +31,7 @@ export default class appLauncher {
     }
 
     private connectToDatabase(){
-        mongoose.connect(`${this.dbLink}`);
+        mongoose.connect(`${this.dbLink}`, { useNewUrlParser: true });
     }
 
     public listen() {
