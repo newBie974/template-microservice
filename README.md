@@ -32,7 +32,8 @@ npm v6.9.0
 
 * [Express](https://github.com/expressjs/express) - Express JS
 * [TypeScript](https://github.com/Microsoft/TypeScript) - TypeScript
-
+* [Mongoose](https://mongoosejs.com/) - Mongoose
+* [MongoDBAtlas](https://www.mongodb.com/cloud/atlas) - MongoDB Atlas
 
 ## Authors
 
