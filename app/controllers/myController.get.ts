@@ -1,5 +1,6 @@
 import * as express from 'express';
 import myInterfaces from '../interfaces/myController.interface';
+import myControllerModel from '../models/myController.model';
 
 export default class myControllerGet {
     private router = express.Router();
@@ -16,6 +17,12 @@ export default class myControllerGet {
     }
 
     getAll = (request: express.Request, response: express.Response) => {
-        response.send(this.demo);
+        myControllerModel.find()
+            .then((res) => {
+                response.send(res);
+            })
+            .catch((err) => {
+                response.send(err);
+            })
     }
 }
