@@ -1,5 +1,6 @@
 import * as express from 'express';
 import myControllerModel from '../models/myController.model';
+import HttpException from '../middlewares/HttpExceptions';
 
 export default class myControllerGet {
     private router = express.Router();
@@ -14,22 +15,22 @@ export default class myControllerGet {
         this.router.get('/:id', this.getById);
     }
 
-    private getAll = async(request: express.Request, response: express.Response): Promise<express.Response> => {
+    private getAll = async(request: express.Request, response: express.Response, next: express.NextFunction): Promise<any> => {
         try {
             const listController = await this.myControllerModel.find();
             return response.send(listController);
         } catch(err) {
-            return response.send({ status: 404 });
+            next(new HttpException(404, 'No data found', 'NONE_ID'));
         }
     }
 
-    private getById = async(request: express.Request, response: express.Response): Promise<express.Response> => {
+    private getById = async(request: express.Request, response: express.Response, next: express.NextFunction): Promise<any> => {
         const id = request.params.id;
         try {
             const controller = await this.myControllerModel.find({ _id: id});
             return response.send(controller);
         } catch(err) {
-            return response.status(404).send({ msg: 'no id found', code: 'NO_CONTROLLER_FOUND', err: err });
+            next(new HttpException(404, 'Id user not found', 'ID_NOT_EXIST'));
         }
     }
 }
