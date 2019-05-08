@@ -23,7 +23,7 @@ export default class myControllerGet {
         }
     }
 
-    private getById = async(request: express.Request, response: express.Response): Promise<express.Response> => {
+    private getById = async(request: express.Request, response: express.Response, next: express.NextFunction): Promise<express.Response> => {
         const id = request.params.id;
         try {
             const controller = await this.myControllerModel.find({ _id: id});
