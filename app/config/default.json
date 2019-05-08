@@ -1,0 +1,8 @@
+{
+    "port": 3030,
+    "mongodb": {
+        "user": "template",
+        "password": "0Cq7HmCQjkteBl7A",
+        "path": "mongodb+srv://template:0Cq7HmCQjkteBl7A@democluster-mssfi.mongodb.net/test?retryWrites=true"
+    }
+}
